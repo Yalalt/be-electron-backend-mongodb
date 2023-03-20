@@ -1,0 +1,14 @@
+### Specification data View
+GET http://localhost:9000/api/specification HTTP/1.1
+
+
+### Specification ADD
+POST http://localhost:9000/api/specification HTTP/1.1
+Content-Type: application/json
+
+{
+    "specId": 3037,
+    "prodId": 4008,
+    "property": "Graphics Coprocessor",
+    "value": "Apple M1"
+}

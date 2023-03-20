@@ -1,0 +1,21 @@
+### All category awah
+GET http://localhost:9000/api/category HTTP/1.1
+
+### One category awah
+GET http://localhost:9000/api/category/1001 HTTP/1.1
+
+
+### Delete category 
+DELETE http://localhost:9000/api/category/244543 HTTP/1.1
+
+### Request by no
+GET http://localhost:9000/api/category/limit?cat_no=4 HTTP/1.1
+
+
+### Category nemeh huselt
+POST http://localhost:9000/api/category HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Console"
+}
