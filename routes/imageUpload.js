@@ -1,21 +1,23 @@
 import express from "express";
+import multer from "multer";
 import { nanoid } from "nanoid";
-import { multerStore } from "../config/multer.js";
-import cloudinary from "../config/cloudinary.js";
 
 const imageRouter = express.Router();
 
 const storageFiles = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "/tmp");
+    cb(null, "/products");
   },
-  filename: (req, file, cb) => {
+  filename: (req, file, cb) => {  
+    console.log("Request recev==> ", req);
+
     const ext = extractExtension(file.originalname);
     console.log("extension: ", ext);
 
     const newName = nanoid() + "." + ext;
 
     cb(null, file.originalname);
+    // cb(null, newName);
   },
 });
 
@@ -24,26 +26,30 @@ const extractExtension = (name) => {
   return splitted[splitted.length - 1];
 };
 
-// const upload = multer({ storage: storageFiles });
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb({ message: "Uspported file format" }, false);
+  }
+};
+
+const upload = multer({
+  storage: storageFiles,
+});
+// const upload = multer({
+//   storage: storageFiles,
+//   limits: { fileSize: 1024 * 1024 },
+//   fileFilter: fileFilter,
+// });
 
 // upload router listener
-imageRouter.post("/file", multerStore.single("file"), async (req, res, next) => {
+imageRouter.post("/file", upload.single("file"), async (req, res) => {
+  console.log("request===> : ", req);
   console.log("request file: ", req.file);
+  // const filePathName = req.file?.filename;
 
-
-  // const resp = await cloudinary.v2.uploader.upload("/tmp/corgi_picture_download_hq_Medium.png", {
-  //   folder: "product",
-  //   use_filename: true,
-  // });
-  
-  // resp.then((data) => {
-  //   console.log(data);
-  //   console.log(data.secure_url);
-  // })
-  // .catch((err) => {
-  //   console.log(err);
-  // });
+  // console.log("filePathName: ", filePathName);
 });
-
 
 export default imageRouter;

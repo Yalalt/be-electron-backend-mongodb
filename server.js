@@ -30,24 +30,37 @@ app.use("/api", wishlist);
 app.use("/uploads", express.static("products"));
 
 
-const mylogger = function(req, res, next) {
-  console.log("Log log ....");
-  next();
-}
+// const mylogger = function(req, res, next) {
+//   console.log("Log log .... ", req);
+//   next();
+// }
 
-app.use(mylogger);
+// app.use(mylogger);
 
-const requestTime = function(req, res, next) {
-  req.requestTime = Date.now();
-  console.log("request time: ");
-}
+// const requestTime = function(req, res, next) {
+//   req.requestTime = Date.now();
+//   console.log("request time: ", new Date(req.requestTime).toISOString().slice(0,19));
+// }
 
-app.use(requestTime);
+// app.use(requestTime);
 
 app.post("/uploads", imageRouter);
 
-db.on("error", (error) => console.log(error));
-db.once("open", () => console.log("Connected to MongoDB"));
+// const ress = cloudinary.v2.uploader.upload("products/corgi_picture_download_hq_Medium.png", {
+//   folder: "product",
+//   use_filename: true,
+// });
+
+// ress.then((data) => {
+//   console.log(data);
+//   console.log(data.secure_url);
+// })
+// .catch((err) => {
+//   console.log(err);
+// });
+
+// db.on("error", (error) => console.log(error));
+// db.once("open", () => console.log("Connected to MongoDB"));
 
 app.get("/api", (req, res) => {
   res.json({ message: "Welcome Electronic shops API" });
