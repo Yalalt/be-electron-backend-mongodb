@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
-import db from "./config/mongo-connection.js";
+import dotenv from "dotenv";
+import connectDB from "./config/mongo-connection.js";
+import colors from "colors";
 
+dotenv.config({ path: "./config/config.env" });
 
 const app = express();
-const PORT = 9000;
 
 import product from "./routes/product.js";
 import users from "./routes/users.js";
@@ -17,8 +19,6 @@ import cloudinary from "./config/cloudinary.js";
 // import moderator from "./routes/moderator.js";
 // import orders from "./routes/orders.js";
 
-
-
 app.use(cors());
 app.use(express.json());
 
@@ -28,14 +28,6 @@ app.use("/api", categories);
 app.use("/api", specification);
 app.use("/api", wishlist);
 app.use("/uploads", express.static("products"));
-
-
-// const mylogger = function(req, res, next) {
-//   console.log("Log log .... ", req);
-//   next();
-// }
-
-// app.use(mylogger);
 
 // const requestTime = function(req, res, next) {
 //   req.requestTime = Date.now();
@@ -59,11 +51,22 @@ app.post("/uploads", imageRouter);
 //   console.log(err);
 // });
 
-// db.on("error", (error) => console.log(error));
-// db.once("open", () => console.log("Connected to MongoDB"));
+const conn = await connectDB();
+
+conn.on("error", (error) => console.log(error));
+conn.once("open", () => console.log("Connected to MongoDB"));
+
+console.log(colors.red.underline(`MongoDB Connection Status: host:=>>> ${conn.host}`));
 
 app.get("/api", (req, res) => {
   res.json({ message: "Welcome Electronic shops API" });
 });
 
-app.listen(PORT || 3090, () => console.log("Service is runnig port " + PORT));
+const server = app.listen(process.env.PORT || 3090, () =>
+  console.log(colors.yellow(`Server is runnig port ${process.env.PORT}`))
+);
+
+process.on("unhandledRejection", (err, promise) => {
+  console.log(colors.red(`Алдаа гарлаа ${err.message}`));
+  server.close(() => process.exit(1));
+});

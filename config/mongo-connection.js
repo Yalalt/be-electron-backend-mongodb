@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 
-const database = mongoose.connect(
-  "mongodb+srv://aqua2022yalaltgandush:t7Zg4gQrdwhd75BG@cluster0.uqiga9k.mongodb.net/restapi?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-  }
-);
+const connectDB = async () => {
+  const conn = await mongoose.connect(
+    process.env.MONGODBURI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
+  return conn.connection;
+}
 
-export default (await database).connection;
+export default connectDB;
