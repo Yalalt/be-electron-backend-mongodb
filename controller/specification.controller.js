@@ -1,7 +1,7 @@
 import {
   addSpecification,
   getSpecification,
-} from "../model/specification-service.js";
+} from "../model/services/specification-service.js";
 
 export const getAll = async (req, res) => {
   try {

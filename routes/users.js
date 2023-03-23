@@ -6,15 +6,19 @@ import {
   getUserWishlist,
   getUser,
   deleteUser,
+  userRegister,
+  userLogin,
 } from "../controller/user.controller.js";
 
 const router = express.Router();
 
-router.get("/user", getAll);
+
+router.route("/user").get(getAll).post(create);
+router.post("/user/register", userRegister);
+router.post("/user/login", userLogin);
 router.get("/user/:id", getUser);
 router.get("/user/limit?", getUsersLimits);
 router.get("/user/uwl/:id", getUserWishlist);
-router.post("/user", create);
 router.delete("/user/:id", deleteUser);
 
 export default router;

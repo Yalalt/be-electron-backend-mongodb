@@ -5,7 +5,7 @@ import {
   updateCategory,
   deleteCategory,
   getOneCat,
-} from "../model/category-service.js";
+} from "../model/services/category-service.js";
 
 export const getAll = async (req, res) => {
   try {

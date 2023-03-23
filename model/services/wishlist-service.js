@@ -1,4 +1,4 @@
-import { pool } from "../config/mysql-config.js";
+import { pool } from "../../config/mysql-config.js";
 
 export const addWishList = async (userId, prodId) => {
   await pool.query("INSERT INTO wishlist VALUES (?, ?, ?)", [

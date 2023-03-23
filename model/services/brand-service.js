@@ -1,4 +1,4 @@
-import { pool } from "../config/mysql-config.js";
+import { pool } from "../../config/mysql-config.js";
 
 export async function addBrand(brandName) {
   await pool.query("INSERT INTO brand VALUES (?, ?)", [null, brandName]);

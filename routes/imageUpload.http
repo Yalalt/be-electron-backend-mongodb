@@ -1,0 +1,8 @@
+### Image upload POST
+
+http://localhost:9000/uploads/file HTTP/1.1
+Content-Type: application/json
+
+{
+    
+}

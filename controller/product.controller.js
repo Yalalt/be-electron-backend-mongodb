@@ -7,7 +7,7 @@ import {
   createProduct,
   removeProduct,
   getProductsLimit,
-} from "../model/product-service.js";
+} from "../model/services/product-service.js";
 
 
 export const getOne = async (req, res) => {

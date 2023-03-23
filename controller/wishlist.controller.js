@@ -1,4 +1,4 @@
-import { addWishList, getWishList } from "../model/wishlist-service.js";
+import { addWishList, getWishList } from "../model/services/wishlist-service.js";
 
 export const createWishlist = async (req, res) => {
   console.log("Add wishlist huselt irlee");

@@ -12,14 +12,14 @@ import {
 
 const router = express.Router();
 
-router.get("/product", getAll);
-router.get("/product/:id", getOne);
+router.route("/product").get(getAll).post(create);
+router.route("/product/:id").get(getOne).delete(deleteProduct);
+// Service deer to check uri fix
 router.get("/product/category/?", getProductByCategory);
 router.get("/product/brand/?", getProductByBrand);
 // /product/limit?prod_n
 router.get("/product/limit?", getLimitProducts);
 router.get("/product/maxprcprod", getProductsMaxPrice);
-router.post("/product", create);
-router.delete("/product/:id", deleteProduct);
+
 
 export default router;

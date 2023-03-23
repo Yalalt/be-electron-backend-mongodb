@@ -44,7 +44,7 @@ const upload = multer({
 // });
 
 // upload router listener
-imageRouter.post("/file", upload.single("file"), async (req, res) => {
+imageRouter.post("/uploads/file", upload.single("file"), async (req, res) => {
   console.log("request===> : ", req);
   console.log("request file: ", req.file);
   // const filePathName = req.file?.filename;
