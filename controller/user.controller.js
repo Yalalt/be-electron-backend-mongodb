@@ -1,12 +1,3 @@
-import {
-  createUser,
-  getUserById,
-  getUsers,
-  getWishlistUserList,
-  removeUser,
-  getUsersLimit,
-} from "../model/services/user-service.js";
-
 import { UserModel } from "../model/all.model.js";
 import bcrypt from "bcrypt";
 
