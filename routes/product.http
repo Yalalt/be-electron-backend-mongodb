@@ -15,11 +15,11 @@ GET http://localhost:9000/api/product/brand/?name=2003 HTTP/1.1
 
 
 ### Products categorooor awah
-GET http://localhost:9000/api/product/category/?name=1001 HTTP/1.1
+GET http://localhost:9000/api/product/category/?name=Tablet HTTP/1.1
 
 
 ### Products ID gaar awah
-GET http://localhost:9000/api/product/4005 HTTP/1.1
+GET http://localhost:9000/api/product/5002 HTTP/1.1
 
 ###
 DELETE http://localhost:9000/api/product/1

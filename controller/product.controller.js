@@ -8,14 +8,14 @@ import {
   removeProduct,
   getProductsLimit,
 } from "../model/services/product-service.js";
-
+import { ProductModel } from "../model/all.model.js";
 
 export const getOne = async (req, res) => {
   const { id } = req.params;
   if (!id) return res.json({ status: false, message: "Id could not found" });
 
   try {
-    const result = await getProductById(id);
+    const result = await ProductModel.findOne({prod_id: id});
     res.json({ status: true, result });
   } catch (error) {
     console.log(error);
@@ -28,7 +28,7 @@ export const getProductByCategory = async (req, res) => {
   if (!name) return res.json({ status: false, message: "Category could not found" });
 
   try {
-    const result = await getProductByCategoryId(name);
+    const result = await ProductModel.find({category: {$eq: name}});
     res.json({ status: true, result });
   } catch (error) {
     console.log(error);
@@ -53,7 +53,7 @@ export const getProductByBrand = async (req, res) => {
 export const getAll = async (req, res) => {
   try {
     console.log("All Product Huselt orj irlee");
-    const result = await getProducts();
+    const result = await ProductModel.find({});
     res.json({ status: true, result });
   } catch (error) {
     console.log(error);

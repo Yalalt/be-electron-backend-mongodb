@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { nanoid } from "nanoid";
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new Schema(
   {
     _id: Schema.Types.ObjectId,
     firstname: {
@@ -50,7 +50,7 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-const ProductSchema = new mongoose.Schema(
+const ProductSchema = new Schema(
   {
     _id: Schema.Types.ObjectId,
     name: {
@@ -87,7 +87,7 @@ const ProductSchema = new mongoose.Schema(
   }
 );
 
-const OrderSchema = new mongoose.Schema({
+const OrderSchema = new Schema({
   _id: Schema.Types.ObjectId,
   user_id: {
     type: Schema.Types.ObjectId,
@@ -111,7 +111,7 @@ const OrderSchema = new mongoose.Schema({
     collection: "orders"
 });
 
-const CategorySchema = new mongoose.Schema(
+const CategorySchema = new Schema(
   {
     name: {
       type: String,
