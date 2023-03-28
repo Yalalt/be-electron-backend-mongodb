@@ -11,6 +11,9 @@ import {
 import { ProductModel } from "../model/all.model.js";
 
 export const getOne = async (req, res) => {
+
+  console.log("ONE huselt irlee");
+
   const { id } = req.params;
   if (!id) return res.json({ status: false, message: "Id could not found" });
 
@@ -25,10 +28,13 @@ export const getOne = async (req, res) => {
 
 export const getProductByCategory = async (req, res) => {
   const { name } = req.query;
+  console.log("Huselt name: ", name);
+  
   if (!name) return res.json({ status: false, message: "Category could not found" });
 
   try {
-    const result = await ProductModel.find({category: {$eq: name}});
+    console.log("Product category find huselt");
+    const result = await ProductModel.find({category: name});
     res.json({ status: true, result });
   } catch (error) {
     console.log(error);
