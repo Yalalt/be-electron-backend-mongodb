@@ -1,4 +1,5 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 import { nanoid } from "nanoid";
 
 const UserSchema = new Schema(
@@ -129,7 +130,7 @@ const CategorySchema = new Schema(
   }
 );
 
-export const CategoryModel = mongoose.model("Category", CategorySchema);
-export const UserModel = mongoose.model.Users || mongoose.model("Users", UserSchema);
-export const ProductModel = mongoose.model("Products", ProductSchema);
-export const OrderModel = mongoose.model("Orders", OrderSchema);
+export const CategoryModel = mongoose.model("Category", CategorySchema, 'category');
+export const UserModel = mongoose.model.Users || mongoose.model("Users", UserSchema, 'users');
+export const ProductModel = mongoose.model("Products", ProductSchema, 'products');
+export const OrderModel = mongoose.model("Orders", OrderSchema, 'orders');
