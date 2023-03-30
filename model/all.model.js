@@ -136,8 +136,9 @@ const BrandSchema = new Schema(
       type: String,
       required: [true, "Брэнд нэрээ оруулна уу"],
     }
-  }, {
-    "brands"
+  },
+  {
+    collection: "brands"
   }
 )
 
