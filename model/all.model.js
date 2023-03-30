@@ -130,7 +130,19 @@ const CategorySchema = new Schema(
   }
 );
 
+const BrandSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Брэнд нэрээ оруулна уу"],
+    }
+  }, {
+    "brands"
+  }
+)
+
 export const CategoryModel = mongoose.model("Category", CategorySchema, 'category');
 export const UserModel = mongoose.model.Users || mongoose.model("Users", UserSchema, 'users');
 export const ProductModel = mongoose.model("Products", ProductSchema, 'products');
 export const OrderModel = mongoose.model("Orders", OrderSchema, 'orders');
+export const BrandModel = mongoose.model("Brands", BrandSchema, 'brands'); 
