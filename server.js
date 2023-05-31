@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/mongo-connection.js";
 import colors from "colors";
 
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: "./config/.env" });
 
 const app = express();
 const conn = await connectDB();
@@ -46,23 +46,6 @@ app.post("/unprotected", (req, res, next) => {
     data: "successful got the unprotected route",
   });
 });
-
-// const requestTime = function(req, res, next) {
-//   req.requestTime = Date.now();
-//   console.log("request time: ", new Date(req.requestTime).toISOString().slice(0,19));
-// }
-// app.use(requestTime);
-// const ress = cloudinary.v2.uploader.upload("products/corgi_picture_download_hq_Medium.png", {
-//   folder: "product",
-//   use_filename: true,
-// });
-// ress.then((data) => {
-//   console.log(data);
-//   console.log(data.secure_url);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
 
 // MONGO DB error handler
 conn.on("error", (error) => console.log(error));

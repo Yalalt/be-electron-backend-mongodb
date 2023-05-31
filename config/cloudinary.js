@@ -4,9 +4,9 @@ dotenv.config();
 
 // Configuration
 cloudinary.config({
-  cloud_name: 'dhirtao9q',
-  api_key: '532861227729412',
-  api_secret: '5pvdCXdq4zyVht733OyvMBr5cmQ'
+  cloud_name: process.env.CLOD_CONFIG_NAME,
+  api_key: process.env.CLOD_API_KEY,
+  api_secret: process.env.CLOD_SECRET,
 });
 
 export default cloudinary;
